@@ -2,7 +2,7 @@ package Arrays;
 
 import java.util.*;
 
-public class Leaders {
+public class MaximumSumSubarray {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -12,13 +12,16 @@ public class Leaders {
             arr[i] = sc.nextInt();
         }
 
-        int currentLeader = arr[n - 1];
-        for (int i = n - 2; i >= 0; i--) {
-            if (currentLeader < arr[i])
-                currentLeader = arr[i];
-        }
+        int maxEnding = arr[0];
+        for (int i = 1; i < n; i++)
+            maxEnding = Math.max(arr[i], maxEnding + arr[i]);
 
-        System.out.print(currentLeader);
+        System.out.print(maxEnding);
         sc.close();
     }
 }
+
+// 5
+// 1 -2 3 -1 2
+
+// 4
