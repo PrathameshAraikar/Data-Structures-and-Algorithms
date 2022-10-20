@@ -2,7 +2,7 @@ package Arrays;
 
 import java.util.*;
 
-public class Leaders {
+public class MaximumConsecutiveOnes {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -12,13 +12,20 @@ public class Leaders {
             arr[i] = sc.nextInt();
         }
 
-        int currentLeader = arr[n - 1];
-        for (int i = n - 2; i >= 0; i--) {
-            if (currentLeader < arr[i])
-                currentLeader = arr[i];
+        int counter = 0, res = 0;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] != 0) {
+                counter++;
+                res = Math.max(res, counter);
+            } else counter = 0;
         }
 
-        System.out.print(currentLeader);
+        System.out.print(res);
         sc.close();
     }
 }
+
+// 5
+// 1 0 1 1 0
+
+// 2
