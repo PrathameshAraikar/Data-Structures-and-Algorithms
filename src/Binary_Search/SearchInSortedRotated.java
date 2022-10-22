@@ -19,7 +19,7 @@ public class SearchInSortedRotated {
             if (arr[mid] == key) {
                 System.out.println(mid);
                 System.exit(0);
-            } else if (arr[low] < arr[mid]) {
+            } else if (arr[low] <= arr[mid]) {
                 // LHS is sorted
                 if (key >= arr[low] && key <= arr[mid])
                     high = mid - 1;
