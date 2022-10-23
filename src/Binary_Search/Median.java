@@ -25,6 +25,9 @@ public class Median {
     }
 
     public static double median(int[] a1, int[] a2, int n1, int n2) {
+        if(n1 > n2)
+            return median(a2, a1, n2, n1);
+
         int low = 0, high = n1;
         while (low <= high) {
             int mid1 = (low + high) / 2;
@@ -54,8 +57,8 @@ public class Median {
     }
 }
 
-// 5
-// 10 20 30 40 50
+// 8
+// 10 20 30 40 50 60 70
 // 5
 // 5 15 25 35 45
 
