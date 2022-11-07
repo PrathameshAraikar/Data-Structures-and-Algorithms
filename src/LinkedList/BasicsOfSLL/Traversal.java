@@ -23,14 +23,14 @@ public class Traversal {
 
     public static void iterativeTraversal(Node head) {
         Node curr = head;
-        while(curr != null) {
+        while (curr != null) {
             System.out.print(curr.data + " -> ");
             curr = curr.next;
         }
     }
 
     public static void recursiveTraversal(Node head) {
-        if(head == null)
+        if (head == null)
             return;
 
         System.out.print(head.data + " -> ");
