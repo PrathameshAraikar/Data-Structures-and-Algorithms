@@ -19,6 +19,7 @@ public class Traversal {
         iterativeTraversal(head);
         System.out.println();
         recursiveTraversal(head);
+        System.out.print("null");
     }
 
     public static void iterativeTraversal(Node head) {
@@ -27,6 +28,7 @@ public class Traversal {
             System.out.print(curr.data + " -> ");
             curr = curr.next;
         }
+        System.out.print("null");
     }
 
     public static void recursiveTraversal(Node head) {

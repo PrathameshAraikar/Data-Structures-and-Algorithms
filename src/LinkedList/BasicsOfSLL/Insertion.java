@@ -75,5 +75,6 @@ public class Insertion {
             System.out.print(curr.data + " -> ");
             curr = curr.next;
         }
+        System.out.print("null");
     }
 }

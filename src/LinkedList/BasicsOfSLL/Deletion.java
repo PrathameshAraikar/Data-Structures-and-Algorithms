@@ -50,6 +50,7 @@ public class Deletion {
             System.out.print(curr.data + " -> ");
             curr = curr.next;
         }
+        System.out.print("null");
 
         System.out.println();
     }
