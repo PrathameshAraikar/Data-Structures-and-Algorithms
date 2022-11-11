@@ -27,8 +27,12 @@ public class NthNodeFromEnd {
             return;
 
         Node first = head, second = head;
-        for (int i = 1; i <= n; i++)
+        for (int i = 1; i <= n; i++) {
+            if(first == null)
+                return;
+            
             first = first.next;
+        }
 
         while (first != null) {
             first = first.next;
