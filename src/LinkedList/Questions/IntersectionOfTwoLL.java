@@ -28,10 +28,11 @@ public class IntersectionOfTwoLL {
 
         iterativeTraversal(head1);
         iterativeTraversal(head2);
-        System.out.print(intersectionPoint(head1, head2));
+        System.out.println(intersectionPoint1(head1, head2));
+        System.out.println(intersectionPoint2(head1, head2));
     }
 
-    public static int intersectionPoint(Node head1, Node head2) {
+    public static int intersectionPoint1(Node head1, Node head2) {
         int count1 = 0, count2 = 0;
         for (Node curr = head1; curr != null; curr = curr.next)
             count1++;
@@ -40,7 +41,7 @@ public class IntersectionOfTwoLL {
             count2++;
 
         if (count1 < count2)
-            return intersectionPoint(head2, head1);
+            return intersectionPoint1(head2, head1);
 
         int difference = count1 - count2;
 
@@ -49,7 +50,7 @@ public class IntersectionOfTwoLL {
             curr1 = curr1.next;
 
         Node curr2 = head2;
-        while (curr1.next != null && curr2.next != null) {
+        while (curr1 != null && curr2 != null) {
             if (curr1 == curr2)
                 return curr1.data;
 
@@ -58,6 +59,19 @@ public class IntersectionOfTwoLL {
         }
 
         return -1;
+    }
+
+    public static int intersectionPoint2(Node headA, Node headB) {
+        if(headA == null || headB == null)
+            return -1;
+
+        Node currA = headA, currB = headB;
+        while(currA != currB) {
+            currA = currA == null ? headB : currA.next;
+            currB = currB == null ? headA : currB.next;
+        }
+
+        return currA.data;
     }
 
     public static void iterativeTraversal(Node head) {
