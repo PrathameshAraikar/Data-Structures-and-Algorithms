@@ -30,14 +30,14 @@ public class MergeTwoSortedLL {
     }
 
     public static Node merge(Node headA, Node headB) {
-        if(headA == null)
+        if (headA == null)
             return headB;
 
-        if(headB == null)
+        if (headB == null)
             return headA;
 
         Node tail = null, head = null;
-        if(headA.data < headB.data) {
+        if (headA.data < headB.data) {
             head = tail = headA;
             headA = headA.next;
         } else {
@@ -45,8 +45,8 @@ public class MergeTwoSortedLL {
             headB = headB.next;
         }
 
-        while(headA != null && headB != null) {
-            if(headA.data < headB.data) {
+        while (headA != null && headB != null) {
+            if (headA.data < headB.data) {
                 tail.next = headA;
                 tail = headA;
                 headA = headA.next;
@@ -57,7 +57,7 @@ public class MergeTwoSortedLL {
             }
         }
 
-        if(headA == null)
+        if (headA == null)
             tail.next = headB;
         else
             tail.next = headA;
