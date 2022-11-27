@@ -31,7 +31,6 @@ public class PalindromeLL {
             tortoise = tortoise.next;
         }
 
-//        Node rev = reverse(tortoise.next);
         Node rev = reverse(tortoise.next);
         while (rev != null) {
             if (rev.data != curr.data)
