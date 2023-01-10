@@ -1,19 +1,20 @@
 package Stack;
 
 import java.util.*;
+
 public class KStacksInOneArray {
-  public static void main(String[] args){
-    Scanner sc = new Scanner(System.in);
-    KStacks ks = new KStacks(2,5);
-    ks.push(0, 1);
-    ks.push(0, 2);
-    ks.push(0, 3);
-    ks.push(1, 4);
-    ks.push(1, 5);
-    System.out.println(ks.pop(0));
-    System.out.println(ks.pop(1));
-    sc.close();
-  }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        KStacks ks = new KStacks(2, 5);
+        ks.push(0, 1);
+        ks.push(0, 2);
+        ks.push(0, 3);
+        ks.push(1, 4);
+        ks.push(1, 5);
+        System.out.println(ks.pop(0));
+        System.out.println(ks.pop(1));
+        sc.close();
+    }
 }
 
 class KStacks {
@@ -27,11 +28,11 @@ class KStacks {
         next = new int[size];
         top = new int[k];
 
-        for(int i=0; i<k; i++)
+        for (int i = 0; i < k; i++)
             top[i] = -1;
 
-        for(int i=0; i<cap-1; i++)
-            next[i] = i+1;
+        for (int i = 0; i < cap - 1; i++)
+            next[i] = i + 1;
         next[cap - 1] = -1;
     }
 
