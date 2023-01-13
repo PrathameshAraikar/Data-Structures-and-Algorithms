@@ -10,7 +10,16 @@ public class StackWithGetMin {
         s.push(1);
         s.pop();
 
-        System.out.print("Minimum Element from Stack: " + s.getMin() );
+        System.out.println("Minimum Element from Stack: " + s.getMin());
+
+        StackWithGetMinInO1TimeAndOnSpace stk = new StackWithGetMinInO1TimeAndOnSpace();
+        stk.push(4);
+        stk.push(5);
+        stk.push(8);
+        stk.push(1);
+        stk.pop();
+
+        System.out.print("Minimum Element from Stack: " + stk.getMin());
     }
 }
 
@@ -42,5 +51,37 @@ class StackWithGetMinInO1SpaceTime {
 
     public int getMin() {
         return min;
+    }
+}
+
+class StackWithGetMinInO1TimeAndOnSpace {
+    ArrayDeque<Integer> mainStack = new ArrayDeque<>();
+    ArrayDeque<Integer> auxStack = new ArrayDeque<>();
+
+    public void push(int x) {
+        if(mainStack.isEmpty()) {
+            mainStack.push(x);
+            auxStack.push(x);
+            return;
+        }
+
+        mainStack.push(x);
+
+        if(auxStack.peek() >= mainStack.peek())
+            auxStack.push(x);
+    }
+
+    public void pop() {
+        if(Objects.equals(mainStack.peek(), auxStack.peek()))
+            auxStack.pop();
+        mainStack.pop();
+    }
+
+    public int top() {
+        return mainStack.peek();
+    }
+
+    public int getMin() {
+        return auxStack.peek();
     }
 }
