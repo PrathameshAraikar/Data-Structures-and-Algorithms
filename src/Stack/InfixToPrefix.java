@@ -2,44 +2,43 @@ package Stack;
 
 import java.util.*;
 
-public class InfixToPostfix {
+public class InfixToPrefix {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String infix = sc.nextLine();
-
-        StringBuilder postfix = new StringBuilder();
+        String s = sc.nextLine();
         ArrayDeque<Character> stk = new ArrayDeque<>();
+        StringBuilder prefix = new StringBuilder("");
+        StringBuilder infix = new StringBuilder(s);
+        infix.reverse();
 
         for (int i = 0; i < infix.length(); i++) {
             char ch = infix.charAt(i);
 
-            // If ch is = '(':
-            if (ch == '(')
+            // if ch = ')'
+            if (ch == ')')
                 stk.push(ch);
 
-                // If ch is a letter or a digit:
+                // if ch is an operand
             else if (Character.isLetterOrDigit(ch))
-                postfix.append(ch);
+                prefix.append(ch);
 
-                // If ch is = ')'
-            else if (ch == ')') {
+                // if ch is a '('
+            else if (ch == '(') {
                 while (!stk.isEmpty() && stk.peek() != '(') {
                     char top = stk.peek();
                     stk.pop();
-                    postfix.append(top);
+                    prefix.append(top);
                 }
-
                 stk.pop();
             }
 
-            // If ch is an operator
+            // if ch is an operator
             else {
                 while (!stk.isEmpty() && precedence(ch) <= precedence(stk.peek())) {
                     char top = stk.peek();
                     stk.pop();
-                    postfix.append(top);
+                    prefix.append(top);
                 }
-
                 stk.push(ch);
             }
         }
@@ -47,21 +46,15 @@ public class InfixToPostfix {
         while (!stk.isEmpty()) {
             char top = stk.peek();
             stk.pop();
-            if (top == '(') {
-                System.out.println("Invalid expression");
-                System.exit(0);
-            }
-
-            postfix.append(top);
+            prefix.append(top);
         }
 
-        System.out.println("Postfix: " + postfix);
-
+        System.out.println("Prefix: " + prefix.reverse());
         sc.close();
     }
 
-    public static int precedence(char operator) {
-        switch (operator) {
+    public static int precedence(char ch) {
+        switch (ch) {
             case '^':
                 return 3;
 
@@ -73,11 +66,10 @@ public class InfixToPostfix {
             case '-':
                 return 1;
         }
-
         return -1;
     }
 }
 
-// a+b*(c^d-e)^(f+g*h)-i
+// a+b*c
 
-// Postfix: abcd^e-fgh*+^*+i-
+// Prefix: +a*bc

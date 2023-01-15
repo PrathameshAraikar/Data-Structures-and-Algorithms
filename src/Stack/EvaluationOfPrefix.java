@@ -2,13 +2,13 @@ package Stack;
 
 import java.util.*;
 
-public class EvaluationOfPostfix {
+public class EvaluationOfPrefix {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String s = sc.nextLine();
         ArrayDeque<Integer> stk = new ArrayDeque<>();
 
-        for (int i = 0; i < s.length(); i++) {
+        for (int i = s.length() - 1; i >= 0; i--) {
             char ch = s.charAt(i);
 
             // if ch = ' '
@@ -17,25 +17,30 @@ public class EvaluationOfPostfix {
 
                 // if ch is a number
             else if (Character.isDigit(ch)) {
+                StringBuilder num = new StringBuilder();
                 int n = 0;
 
                 //extract the characters and store it in num
                 while (Character.isDigit(ch)) {
                     n = n * 10 + (int) (ch - '0');
-                    i++;
+                    i--;
                     ch = s.charAt(i);
                 }
-                i--;
+                i++;
 
                 //push the number in stack
+                num.append(n);
+                num.reverse();
+                String number = new String(num);
+                n = Integer.parseInt(number);
                 stk.push(n);
             }
 
             // if ch is an operator
             else {
-                int op2 = stk.peek();
-                stk.pop();
                 int op1 = stk.peek();
+                stk.pop();
+                int op2 = stk.peek();
                 stk.pop();
 
                 switch (ch) {
@@ -62,7 +67,3 @@ public class EvaluationOfPostfix {
         sc.close();
     }
 }
-
-// 100 200 + 2 / 5 * 7 +
-
-// 757
