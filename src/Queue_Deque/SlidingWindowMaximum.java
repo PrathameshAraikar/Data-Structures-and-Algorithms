@@ -16,7 +16,7 @@ public class SlidingWindowMaximum {
 
         // Processing the first window
         for(int i=0; i<k; i++) {
-            while(!deq.isEmpty() && arr[i] >= arr[deq.peek()])
+            while(!deq.isEmpty() && arr[i] >= arr[deq.peekLast()])
                 deq.pollLast();
 
             deq.offerLast(i);
@@ -29,7 +29,7 @@ public class SlidingWindowMaximum {
             while(!deq.isEmpty() && deq.peek() <= i-k)
                 deq.pollFirst();
 
-            while(!deq.isEmpty() && arr[i] >= arr[deq.peek()])
+            while(!deq.isEmpty() && arr[i] >= arr[deq.peekLast()])
                 deq.pollLast();
 
             deq.offerLast(i);
@@ -45,3 +45,5 @@ public class SlidingWindowMaximum {
 //3
 
 //4 4 6
+
+//[1,3,1,2,0,5]
