@@ -17,7 +17,7 @@ public class CircularTour {
 
         int currentPetrol = 0, prevPetrol = 0, start = 0;
         for (int i = 0; i < n; i++) {
-            currentPetrol += petrol[i] - distance[i];
+            currentPetrol += (petrol[i] - distance[i]);
             if (currentPetrol < 0) {
                 prevPetrol += currentPetrol;
                 start = i + 1;
@@ -25,7 +25,7 @@ public class CircularTour {
             }
         }
 
-        if (currentPetrol + prevPetrol > 0)
+        if (currentPetrol + prevPetrol >= 0)
             System.out.println("Start at: " + (start + 1));
         else
             System.out.println("-1");
