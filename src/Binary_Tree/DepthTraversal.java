@@ -33,7 +33,7 @@ public class DepthTraversal {
     }
 
     public static void inorder(BinaryTreeNode root) {
-        if(root != null) {
+        if (root != null) {
             inorder(root.left);
             System.out.print(root.data + " ");
             inorder(root.right);
@@ -41,7 +41,7 @@ public class DepthTraversal {
     }
 
     public static void preorder(BinaryTreeNode root) {
-        if(root != null) {
+        if (root != null) {
             System.out.print(root.data + " ");
             preorder(root.left);
             preorder(root.right);
@@ -49,7 +49,7 @@ public class DepthTraversal {
     }
 
     public static void postorder(BinaryTreeNode root) {
-        if(root != null) {
+        if (root != null) {
             postorder(root.left);
             postorder(root.right);
             System.out.print(root.data + " ");

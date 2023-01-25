@@ -34,13 +34,13 @@ public class NodesAtDistanceK {
     }
 
     public static void nodesAtKDistance(BinaryTreeNode root, int k) {
-        if(root == null)
+        if (root == null)
             return;
 
-        if(k == 0)
+        if (k == 0)
             System.out.print(root.data + " ");
 
-        nodesAtKDistance(root.left, k-1);
-        nodesAtKDistance(root.right, k-1);
+        nodesAtKDistance(root.left, k - 1);
+        nodesAtKDistance(root.right, k - 1);
     }
 }
