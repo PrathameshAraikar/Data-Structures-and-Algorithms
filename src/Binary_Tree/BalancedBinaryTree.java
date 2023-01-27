@@ -9,7 +9,9 @@ package Binary_Tree;
 //    }
 //}
 
-public class Size {
+import java.util.*;
+
+public class BalancedBinaryTree {
     public static void main(String[] args) {
         BinaryTreeNode root = new BinaryTreeNode(10);
         root.left = new BinaryTreeNode(20);
@@ -19,13 +21,24 @@ public class Size {
         root.right.left = new BinaryTreeNode(60);
         root.right.right = new BinaryTreeNode(70);
 
-        System.out.println("Total Number of Nodes: " + totalCountOfNodes(root));
+        System.out.println("Is Tree Balanced: " + (isBalanced(root) > 0 ? "Balanced" : "Not Balanced"));
     }
 
-    public static int totalCountOfNodes(BinaryTreeNode root) {
+    public static int isBalanced(BinaryTreeNode root) {
         if (root == null)
             return 0;
 
-        return 1 + totalCountOfNodes(root.left) + totalCountOfNodes(root.right);
+        int leftHeight = isBalanced(root.left);
+        if (leftHeight == -1)
+            return -1;
+
+        int rightHeight = isBalanced(root.right);
+        if (rightHeight == -1)
+            return -1;
+
+        if (Math.abs(leftHeight - rightHeight) > 1)
+            return -1;
+
+        return Math.max(leftHeight, rightHeight) + 1;
     }
 }
