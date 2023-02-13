@@ -24,22 +24,22 @@ public class CountNodesInCompleteBT {
 
     public static double sizeOfCompleteBT(BinaryTreeNode root) {
         int lh = 0, rh = 0;
-        if(root == null)
+        if (root == null)
             return 0;
 
         BinaryTreeNode curr = root;
-        while(curr != null) {
+        while (curr != null) {
             curr = curr.left;
             lh++;
         }
 
         curr = root;
-        while(curr != null) {
+        while (curr != null) {
             curr = curr.right;
             rh++;
         }
 
-        if(lh == rh)
+        if (lh == rh)
             return Math.pow(2, lh) - 1;
         return 1 + sizeOfCompleteBT(root.left) + sizeOfCompleteBT(root.right);
     }

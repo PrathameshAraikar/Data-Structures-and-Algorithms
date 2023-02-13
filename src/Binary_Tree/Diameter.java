@@ -12,6 +12,7 @@ package Binary_Tree;
 public class Diameter {
 
     static int res = 0;
+
     public static void main(String[] args) {
         BinaryTreeNode root = new BinaryTreeNode(10);
         root.left = new BinaryTreeNode(20);
@@ -26,7 +27,7 @@ public class Diameter {
     }
 
     public static int heightOfBinaryTree(BinaryTreeNode root) {
-        if(root == null)
+        if (root == null)
             return 0;
 
         int leftHeight = heightOfBinaryTree(root.left);

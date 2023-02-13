@@ -10,6 +10,7 @@ package Binary_Tree;
 //}
 
 import java.util.*;
+
 public class SerializeDeserialize {
 
     static final int EMPTY = -1;
@@ -33,7 +34,7 @@ public class SerializeDeserialize {
     }
 
     public static ArrayList<Integer> serializeBT(BinaryTreeNode root, ArrayList<Integer> arrList) {
-        if(root == null) {
+        if (root == null) {
             arrList.add(EMPTY);
             return arrList;
         }
@@ -45,12 +46,12 @@ public class SerializeDeserialize {
     }
 
     public static BinaryTreeNode deserializeBT(ArrayList<Integer> arrList) {
-        if(index == arrList.size())
+        if (index == arrList.size())
             return null;
 
         int data = arrList.get(index);
         index++;
-        if(data == -1)
+        if (data == -1)
             return null;
         BinaryTreeNode root = new BinaryTreeNode(data);
         root.left = deserializeBT(arrList);
